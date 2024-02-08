@@ -1,0 +1,35 @@
+// Variables light Theme
+$primary-color-light: hsl(0, 0%, 100%);
+$background-color-light: hsl(0, 0%, 98%);
+$text-color-light: hsl(200, 15%, 8%);
+$input-color-light: hsl(100%, 100%, 100%);
+
+// Variables dark Theme
+$primary-color-dark: hsl(209, 23%, 22%);
+$background-color-dark: hsl(207, 26%, 17%);
+$text-color-dark: hsl(0, 0%, 100%);
+$input-color-dark: hsl(0, 0%, 52%);
+
+$primary-color: $primary-color-light;
+$background-color: $background-color-light;
+$text-color: $text-color-light;
+$input-color: $input-color-light;
+
+@mixin theme($theme) {
+  @if $theme == dark {
+    $primary-color: $primary-color-dark;
+    $background-color: $background-color-dark;
+    $text-color: $text-color-dark;
+    $input-color: $input-color-dark;
+  }
+}
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+}
+
+.dark-mode {
+  @include theme(dark);
+  background-color: $background-color-dark;
+}
