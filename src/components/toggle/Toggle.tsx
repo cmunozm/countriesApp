@@ -1,5 +1,3 @@
-import classes from './toggle.module.scss';
-
 type ToggleProps = {
   isDark: boolean;
   onChangeTheme: () => void;
@@ -7,10 +5,10 @@ type ToggleProps = {
 
 const Toggle = ({ isDark, onChangeTheme }: ToggleProps) => {
   return (
-    <label className={classes.switch}>
-      <span className={classes.switch__inputContainer}>
+    <label className='switch'>
+      <span className='switch__inputContainer'>
         <input
-          className={classes.switch__input}
+          className='switch__input'
           type='checkbox'
           name='toggleTheme'
           onClick={onChangeTheme}

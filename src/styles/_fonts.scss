@@ -6,5 +6,18 @@
 
 body {
   font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.875rem;
   margin: 0;
+}
+
+%Font-Light {
+  font-weight: 300;
+}
+
+%Font-Regular {
+  font-weight: 400;
+}
+
+%Font-Bold {
+  font-weight: 700;
 }
