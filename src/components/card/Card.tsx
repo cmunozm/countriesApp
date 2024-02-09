@@ -1,4 +1,4 @@
-type CardProps = {
+export type CardProps = {
   name: string;
   population: number;
   region: string;
@@ -6,9 +6,7 @@ type CardProps = {
   urlImage: string;
 };
 
-const Card = ({ ...props }: CardProps) => {
-  const { name, population, region, capital, urlImage } = props;
-
+const Card = ({ name, population, region, capital, urlImage }: CardProps) => {
   return (
     <div className='card'>
       <img className='card__image' src={urlImage} alt={`Flag ${name}`} />
@@ -17,7 +15,7 @@ const Card = ({ ...props }: CardProps) => {
         <ul className='card__description'>
           <li>
             <span>Population:</span>
-            {population}
+            {population.toLocaleString()}
           </li>
           <li>
             <span>Region:</span>
