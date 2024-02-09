@@ -15,13 +15,13 @@ $background-color: $background-color-light;
 $text-color: $text-color-light;
 $input-color: $input-color-light;
 
-@mixin theme($theme) {
-  @if $theme == dark {
-    $primary-color: $primary-color-dark;
-    $background-color: $background-color-dark;
-    $text-color: $text-color-dark;
-    $input-color: $input-color-dark;
-  }
+$dark-theme: false !default;
+
+@if $dark-theme {
+  $primary-color: $primary-color-dark;
+  $background-color: $background-color-dark;
+  $text-color: $text-color-dark;
+  $input-color: $input-color-dark;
 }
 
 body {
@@ -30,6 +30,5 @@ body {
 }
 
 .dark-mode {
-  @include theme(dark);
   background-color: $background-color-dark;
 }

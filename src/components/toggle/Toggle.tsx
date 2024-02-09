@@ -1,9 +1,11 @@
-type ToggleProps = {
-  isDark: boolean;
-  onChangeTheme: () => void;
-};
+import { useContext } from 'react';
+import { themeContext } from '../../infrastructure/themeContext';
 
-const Toggle = ({ isDark, onChangeTheme }: ToggleProps) => {
+const Toggle = () => {
+  const { theme, handleTheme } = useContext(themeContext);
+
+  // const onChangeTheme = () => setTheme({ isDark: !theme });
+
   return (
     <label className='switch'>
       <span className='switch__inputContainer'>
@@ -11,11 +13,11 @@ const Toggle = ({ isDark, onChangeTheme }: ToggleProps) => {
           className='switch__input'
           type='checkbox'
           name='toggleTheme'
-          onClick={onChangeTheme}
+          onClick={handleTheme}
         />
         <span />
       </span>
-      <span>{isDark ? 'Dark' : 'Light'} Mode</span>
+      <span>{theme.isDark ? 'Dark' : 'Light'} Mode</span>
     </label>
   );
 };
