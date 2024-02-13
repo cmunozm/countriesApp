@@ -4,6 +4,7 @@ import { themeContext } from './infrastructure/themeContext';
 import CardList from './components/cardList/CardList';
 import Header from './components/header/Header';
 import { useFetch } from './infrastructure/useFetch';
+import Filters from './components/filters/Filters';
 
 function App() {
   const { theme } = useContext(themeContext);
@@ -13,7 +14,10 @@ function App() {
     <>
       <div className={theme.isDark ? 'dark-mode' : ''}>
         <Header title='Where in the World?' />
-        {loading ? 'Loading...' : <CardList cards={data} />}
+        <div className='container'>
+          <Filters />
+          {loading ? 'Loading...' : <CardList cards={data} />}
+        </div>
       </div>
     </>
   );

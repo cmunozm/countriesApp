@@ -7,9 +7,6 @@ const meta:Meta<typeof Toggle> = {
   parameters: {
     layout: 'centered',
   },
-  argTypes: {
-    isDark: { control: 'boolean' },
-  },
 };
 
 export default meta;
@@ -17,6 +14,8 @@ type Story = StoryObj<typeof meta>;
 
 export const DefaultToggle: Story = {
   args: {
-    isDark: true,
+    theme: {
+      isDark: true,
+    }
   },
 };

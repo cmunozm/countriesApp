@@ -1,6 +1,10 @@
 @import './styles/variables';
+@import './styles/_base';
 @import './styles/fonts';
+@import './components/search/_search';
 @import './components/header/header';
 @import './components/toggle/toggle';
 @import './components/card/card';
 @import './components/cardList/cardList';
+@import './components/filters/_filters';
+@import './components/dropdown/_dropdown';
