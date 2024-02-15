@@ -18,6 +18,14 @@
     font-size: 1rem;
     margin-bottom: 0.5rem;
     @extend %Font-Bold;
+    a {
+      color: $text-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   &__description {

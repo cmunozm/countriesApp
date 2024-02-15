@@ -1,11 +1,20 @@
 import Dropdown from '../dropdown/Dropdown';
 import Search from '../search/Search';
 
-const Filters = () => {
+type FiltersProps = {
+  regions: string[];
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+};
+
+const Filters = ({ regions, onChange }: FiltersProps) => {
   return (
     <section className='filters'>
       <Search />
-      <Dropdown options={[]} />
+      <Dropdown
+        options={regions}
+        firstOption='Filter by Region'
+        onChange={onChange}
+      />
     </section>
   );
 };

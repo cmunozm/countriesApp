@@ -11,7 +11,9 @@ const Card = ({ name, population, region, capital, urlImage }: CardProps) => {
     <div className='card'>
       <img className='card__image' src={urlImage} alt={`Flag ${name}`} />
       <div className='card__content'>
-        <h2 className='card__title'>{name}</h2>
+        <h2 className='card__title'>
+          <a href='#'>{name}</a>
+        </h2>
         <ul className='card__description'>
           <li>
             <span>Population:</span>
