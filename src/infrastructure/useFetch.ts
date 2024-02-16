@@ -1,22 +1,11 @@
-import { useState } from 'react';
 import { CountriesAPI } from './apiTypes';
 
-export const useFetch = (url: string) => {  
-  const [data, setData] = useState<CountriesAPI[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const responseData = await response.json();
-      setData(responseData);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return { data, loading, fetchData };
+export const useFetch = async(url: string): Promise<CountriesAPI[]> => {    
+  try {
+    const response = await fetch(url);
+    const responseData = await response.json();
+    return responseData;
+  } catch {
+    throw new Error('Network response was not ok');
+  }  
 };
