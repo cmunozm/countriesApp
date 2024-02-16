@@ -3,12 +3,12 @@ import React from 'react';
 type DropdownProps = {
   options: string[];
   firstOption: string;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChangeRegion: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
-const Dropdown = ({ options, firstOption, onChange }: DropdownProps) => {
+const Dropdown = ({ options, firstOption, onChangeRegion }: DropdownProps) => {
   return (
-    <select className='dropdown' onChange={onChange}>
+    <select className='dropdown' onChange={onChangeRegion}>
       <option value='all'>{firstOption}</option>
       {options.map((option) => (
         <option key={option} value={option}>

@@ -3,17 +3,22 @@ import Search from '../search/Search';
 
 type FiltersProps = {
   regions: string[];
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChangeRegion: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChangeCountry: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Filters = ({ regions, onChange }: FiltersProps) => {
+const Filters = ({
+  regions,
+  onChangeRegion,
+  onChangeCountry,
+}: FiltersProps) => {
   return (
     <section className='filters'>
-      <Search />
+      <Search onChangeCountry={onChangeCountry} />
       <Dropdown
         options={regions}
         firstOption='Filter by Region'
-        onChange={onChange}
+        onChangeRegion={onChangeRegion}
       />
     </section>
   );

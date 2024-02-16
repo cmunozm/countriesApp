@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { themeContext } from './infrastructure/themeContext';
+import { useFetch } from './infrastructure/useFetch';
 
 import CardList from './components/cardList/CardList';
 import Header from './components/header/Header';
-import { useFetch } from './infrastructure/useFetch';
 import Filters from './components/filters/Filters';
 import { CountriesAPI } from './infrastructure/apiTypes';
+import Fuse from 'fuse.js';
 
 function App() {
   const { theme } = useContext(themeContext);
@@ -18,6 +19,22 @@ function App() {
   const regionString: string[] = Array.from(regions).map((item) =>
     item?.toString()
   )!;
+
+  const fuseOptions = {
+    keys: ['name.common'],
+  };
+  const fuse = new Fuse(data, fuseOptions);
+
+  const handleChangeCountry = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchPattern = event.target.value;
+    const result = fuse.search(searchPattern);
+    const countries = result.map((item) => item.item);
+    if (searchPattern !== '') {
+      setCards(countries);
+    } else {
+      setCards(data);
+    }
+  };
 
   const handleChangeRegion = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const region = event.target.value;
@@ -43,7 +60,8 @@ function App() {
         <div className='container'>
           <Filters
             regions={regionString.sort()}
-            onChange={handleChangeRegion}
+            onChangeRegion={handleChangeRegion}
+            onChangeCountry={handleChangeCountry}
           />
           {loading ? 'Loading...' : <CardList cards={cards ?? data} />}
         </div>
