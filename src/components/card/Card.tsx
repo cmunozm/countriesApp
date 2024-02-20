@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export type CardProps = {
   name: string;
   population: number;
@@ -12,7 +14,7 @@ const Card = ({ name, population, region, capital, urlImage }: CardProps) => {
       <img className='card__image' src={urlImage} alt={`Flag ${name}`} />
       <div className='card__content'>
         <h2 className='card__title'>
-          <a href='#'>{name}</a>
+          <Link to={`/countries/${name}`}>{name}</Link>
         </h2>
         <ul className='card__description'>
           <li>

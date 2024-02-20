@@ -15,6 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 export const DefaultContry: Story = {
   args: {
+    countryInfo: {
       name: {
         common: "Belgium",
         official: "Kingdom of Belgium",
@@ -79,5 +80,5 @@ export const DefaultContry: Story = {
       postalCode: {
         format: "####",
       }
-    }
+    }}
   }

@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { CountriesAPI } from './apiTypes';
 
 // ======= Context =======
 export type Theme = {
@@ -6,8 +7,10 @@ export type Theme = {
 };
 
 export interface ThemeContextInterface {
+  countryList?: CountriesAPI[];
   theme: Theme;
   handleTheme: () => void;
+  handleList: (list: CountriesAPI[]) => void;
 }
 
 export const themeContext = createContext<ThemeContextInterface>(
@@ -21,13 +24,19 @@ type ThemeProviderProps = {
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>({ isDark: false });
+  const [countryList, setCountryList] = useState<CountriesAPI[]>();
 
   const handleTheme = () => {
     setTheme({ isDark: !theme.isDark });
   };
+  const handleList = (list: CountriesAPI[]) => {
+    setCountryList(list);
+  };
 
   return (
-    <themeContext.Provider value={{ theme, handleTheme }}>
+    <themeContext.Provider
+      value={{ countryList, theme, handleTheme, handleList }}
+    >
       {children}
     </themeContext.Provider>
   );

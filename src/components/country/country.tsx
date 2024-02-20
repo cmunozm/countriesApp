@@ -1,67 +1,87 @@
+import { Link, useParams } from 'react-router-dom';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { CountriesAPI, Currencies } from '../../infrastructure/apiTypes';
 import Icon from '../icon/Icon';
-
-// country/colombia
-// country/colombia?pop=20&currency=cop
+import { useContext } from 'react';
+import { themeContext } from '../../infrastructure/themeContext';
 
 const getCurrency = (cur: Currencies) => {
   const currency = Object.keys(cur).at(0);
   return currency;
 };
 
-const Country = (props: CountriesAPI) => {
-  const currency = props.currencies ? getCurrency(props.currencies) : '';
+type CountryProps = {
+  countryData?: CountriesAPI;
+};
 
-  const leng: string[] = Object.values(props.languages || {});
+const Country = ({ countryData }: CountryProps) => {
+  const params = useParams();
+  const { countryList } = useContext(themeContext);
+  const selectedContry = countryList?.filter(
+    (item) => item.name?.common === params.country
+  )[0];
+  const countryInfo: CountriesAPI = selectedContry
+    ? selectedContry!
+    : countryData!;
+
+  console.log(countryList);
+
+  const currency = countryInfo.currencies
+    ? getCurrency(countryInfo.currencies)
+    : '';
+
+  const leng: string[] = Object.values(countryInfo.languages || {});
 
   return (
     <div className='country'>
-      <button className='country__btn'>
+      <Link to='/' className='country__btn'>
         <Icon icon={faArrowLeft} />
         Back
-      </button>
+      </Link>
       <section className='country__info'>
         <div className='country__flag'>
-          <img src={props.flags?.png} alt={`Flag ${props.name?.common}`} />
+          <img
+            src={countryInfo.flags?.png}
+            alt={`Flag ${countryInfo.name?.common}`}
+          />
         </div>
         <div>
-          <h2 className='country__name'>{props.name?.common}</h2>
+          <h2 className='country__name'>{countryInfo.name?.common}</h2>
           <ul className='country__details'>
             <li>
               <>
                 <span>Native Name:</span>
-                {props.name?.official}
+                {countryInfo.name?.official}
               </>
             </li>
             <li>
               <>
                 <span>Population:</span>
-                {props.population?.toLocaleString()}
+                {countryInfo.population?.toLocaleString()}
               </>
             </li>
             <li>
               <>
                 <span>Region:</span>
-                {props.region}
+                {countryInfo.region}
               </>
             </li>
             <li>
               <>
                 <span>Sub Region:</span>
-                {props.subregion}
+                {countryInfo.subregion}
               </>
             </li>
             <li>
               <>
                 <span>Capital:</span>
-                {props.capital}
+                {countryInfo.capital}
               </>
             </li>
             <li>
               <>
                 <span>Top Level Domain:</span>
-                {props.tld?.at(0)}
+                {countryInfo.tld?.at(0)}
               </>
             </li>
             <li>
@@ -79,7 +99,7 @@ const Country = (props: CountriesAPI) => {
           </ul>
           <div className='country__borders'>
             <label>Border Countries:</label>
-            {props.borders?.map((item) => (
+            {countryInfo.borders?.map((item) => (
               <span>
                 <a href='#'>{item}</a>
               </span>
