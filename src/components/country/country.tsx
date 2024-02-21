@@ -24,7 +24,12 @@ const Country = ({ countryData }: CountryProps) => {
     ? selectedContry!
     : countryData!;
 
-  console.log(countryList);
+  const getCountryName = (cca3: string) => {
+    const border: CountriesAPI = countryList?.filter(
+      (item) => item.cca3 === cca3
+    )[0]!;
+    return border.name?.common;
+  };
 
   const currency = countryInfo.currencies
     ? getCurrency(countryInfo.currencies)
@@ -101,7 +106,7 @@ const Country = ({ countryData }: CountryProps) => {
             <label>Border Countries:</label>
             {countryInfo.borders?.map((item) => (
               <span>
-                <a href='#'>{item}</a>
+                <Link to={`/countries/${getCountryName(item)}`}>{item}</Link>
               </span>
             ))}
           </div>
