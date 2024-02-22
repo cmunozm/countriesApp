@@ -7,6 +7,8 @@
 
   &__image {
     width: 100%;
+    object-fit: cover;
+    height: 150px;
   }
 
   &__content {
@@ -18,11 +20,13 @@
     font-size: 1rem;
     margin-bottom: 0.5rem;
     @extend %Font-Bold;
-    a {
-      color: $text-color;
-      text-decoration: none;
+  }
 
-      &:hover {
+  a {
+    text-decoration: none;
+    color: $text-color;
+    &:hover {
+      .card__title {
         text-decoration: underline;
       }
     }

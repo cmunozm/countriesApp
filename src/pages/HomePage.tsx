@@ -1,13 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
-import { themeContext } from '../infrastructure/themeContext';
-
+import { useEffect, useState } from 'react';
 import CardList from '../components/cardList/CardList';
 import Filters from '../components/filters/Filters';
 import { CountriesAPI } from '../infrastructure/apiTypes';
 import useCountries from '../infrastructure/useCountries';
 
 function HomePage() {
-  const { theme } = useContext(themeContext);
   const { loading, countries, getRegions, getByRegion, getByCountry } =
     useCountries();
   const regions = getRegions();
@@ -36,14 +33,12 @@ function HomePage() {
 
   return (
     <>
-      <div className={theme.isDark ? 'dark-mode' : ''}>
-        <Filters
-          regions={regions.sort()}
-          onChangeRegion={handleChangeRegion}
-          onChangeCountry={handleChangeCountry}
-        />
-        {loading ? 'Loading...' : <CardList cards={cards} />}
-      </div>
+      <Filters
+        regions={regions.sort()}
+        onChangeRegion={handleChangeRegion}
+        onChangeCountry={handleChangeCountry}
+      />
+      {loading ? 'Loading...' : <CardList cards={cards} />}
     </>
   );
 }
