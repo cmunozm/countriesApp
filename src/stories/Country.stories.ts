@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Country from '../components/country/country';
 import { Region } from '../infrastructure/apiTypes';
+import { withRouter } from 'storybook-addon-react-router-v6';
 
 const meta: Meta<typeof Country> = {
   title: 'Country',
@@ -8,6 +9,7 @@ const meta: Meta<typeof Country> = {
   parameters: {
     layout: 'centered',
   },
+  decorators: [withRouter],
 };
 
 export default meta;
@@ -15,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const DefaultContry: Story = {
   args: {
-    countryInfo: {
+    countryData: {
       name: {
         common: "Belgium",
         official: "Kingdom of Belgium",

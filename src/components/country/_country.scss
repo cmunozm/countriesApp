@@ -25,7 +25,10 @@
   }
 
   &__flag {
-    width: 50%;
+    min-width: 18.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img {
       max-width: 100%;
     }
@@ -72,14 +75,16 @@
       background: $background-color;
       color: $text-color;
       border: none;
+      display: inline-block;
       border-radius: 4px;
-      padding: 0.25rem 1.5rem;
       cursor: pointer;
       border: 1px solid $input-color;
 
       a {
+        padding: 0.25rem 1.5rem;
         color: $text-color;
         text-decoration: none;
+        display: inline-block;
       }
     }
   }

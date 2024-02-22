@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { themeContext } from '../infrastructure/themeContext';
 
 import CardList from '../components/cardList/CardList';
@@ -11,7 +11,7 @@ function HomePage() {
   const { loading, countries, getRegions, getByRegion, getByCountry } =
     useCountries();
   const regions = getRegions();
-  const [cards, setCards] = useState<CountriesAPI[]>([...countries]); //TODO: Why the estate doesn´t change?
+  const [cards, setCards] = useState<CountriesAPI[]>([]);
 
   const handleChangeCountry = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchPattern = event.target.value;
@@ -21,6 +21,12 @@ function HomePage() {
       setCards(countries);
     }
   };
+
+  useEffect(() => {
+    if (!loading) {
+      setCards(countries);
+    }
+  }, [loading]);
 
   const handleChangeRegion = ({
     target,
@@ -36,11 +42,7 @@ function HomePage() {
           onChangeRegion={handleChangeRegion}
           onChangeCountry={handleChangeCountry}
         />
-        {loading ? (
-          'Loading...'
-        ) : (
-          <CardList cards={cards.length === 0 ? countries : cards} />
-        )}
+        {loading ? 'Loading...' : <CardList cards={cards} />}
       </div>
     </>
   );

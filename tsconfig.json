@@ -23,9 +23,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "paths": {
-    "@vitejs/plugin-react": ["node_modules/@vitejs/plugin-react"]
-  },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

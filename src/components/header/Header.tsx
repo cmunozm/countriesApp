@@ -7,7 +7,7 @@ type HeaderProps = {
 const Header = ({ title }: HeaderProps) => {
   return (
     <header className='header'>
-      <a>{title}</a>
+      <a href='/'>{title}</a>
       <Toggle />
     </header>
   );
