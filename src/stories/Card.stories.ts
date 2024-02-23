@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Card from '../components/card/Card';
+import { withRouter } from 'storybook-addon-react-router-v6';
 
 const meta: Meta<typeof Card> = {
   title: 'Card',
@@ -7,6 +8,7 @@ const meta: Meta<typeof Card> = {
   parameters: {    
     layout: 'centered',
   },
+  decorators: [withRouter],
 };
 
 export default meta;

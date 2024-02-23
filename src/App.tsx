@@ -20,7 +20,7 @@ const router = createBrowserRouter([
 const App = () => {
   const { theme } = useContext(themeContext);
   return (
-    <div className={theme.isDark ? 'dark-mode' : ''}>
+    <div className={theme.isDark ? 'main dark-mode' : 'main'}>
       <Header title='Where in the World?' />
       <div className='container'>
         <RouterProvider router={router} />

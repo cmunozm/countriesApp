@@ -38,6 +38,7 @@
     font-size: 1.5rem;
     @extend %Font-Bold;
     margin: 0 0 1.5rem;
+    color: $text-color;
   }
 
   &__details {
@@ -46,6 +47,7 @@
     margin: 0;
     font-size: 1rem;
     column-count: 2;
+    color: $text-color;
 
     li {
       white-space: nowrap;
@@ -64,6 +66,7 @@
     align-items: center;
     gap: 0.5rem;
     flex-wrap: wrap;
+    color: $text-color;
 
     label {
       @extend %Font-Bold;
@@ -72,13 +75,13 @@
     }
 
     span {
-      background: $background-color;
+      background: $primary-color;
       color: $text-color;
       border: none;
       display: inline-block;
       border-radius: 4px;
       cursor: pointer;
-      border: 1px solid $input-color;
+      border: 1px solid $border-color;
 
       a {
         padding: 0.25rem 1.5rem;

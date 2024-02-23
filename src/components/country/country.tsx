@@ -112,7 +112,9 @@ const Country = ({ countryData }: CountryProps) => {
               <label>Border Countries:</label>
               {countryInfo.borders?.map((item) => (
                 <span key={item}>
-                  <Link to={`/countries/${getCountryName(item)}`}>{item}</Link>
+                  <Link to={`/countries/${getCountryName(item)}`}>
+                    {getCountryName(item)}
+                  </Link>
                 </span>
               ))}
             </div>

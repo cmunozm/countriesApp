@@ -3,32 +3,33 @@ $primary-color-light: hsl(0, 0%, 100%);
 $background-color-light: hsl(0, 0%, 98%);
 $text-color-light: hsl(200, 15%, 8%);
 $input-color-light: hsl(0, 0%, 52%);
+$border-color-light: hsl(0, 0%, 52%);
 
 // Variables dark Theme
 $primary-color-dark: hsl(209, 23%, 22%);
 $background-color-dark: hsl(207, 26%, 17%);
 $text-color-dark: hsl(0, 0%, 100%);
-$input-color-dark: hsl(0, 0%, 52%);
+$input-color-dark: hsl(0, 0%, 100%);
+$border-color-dark: hsl(209, 23%, 22%);
 
-$primary-color: $primary-color-light;
-$background-color: $background-color-light;
-$text-color: $text-color-light;
-$input-color: $input-color-light;
-
-$dark-theme: false !default;
-
-@if $dark-theme {
-  $primary-color: $primary-color-dark;
-  $background-color: $background-color-dark;
-  $text-color: $text-color-dark;
-  $input-color: $input-color-dark;
-}
+$primary-color: var(--primary-color);
+$background-color: var(--background-color);
+$text-color: var(--text-color);
+$input-color: var(--input-color);
+$border-color: var(--border-color);
 
 body {
-  background-color: $background-color;
-  color: $text-color;
+  --primary-color: #{$primary-color-light};
+  --background-color: #{$background-color-light};
+  --text-color: #{$text-color-light};
+  --input-color: #{$input-color-light};
+  --border-color: #{$border-color-light};
 }
 
-.dark-mode {
-  background-color: $background-color-dark;
+body .dark-mode {
+  --primary-color: #{$primary-color-dark};
+  --background-color: #{$background-color-dark};
+  --text-color: #{$text-color-dark};
+  --input-color: #{$input-color-dark};
+  --border-color: #{$border-color-dark};
 }

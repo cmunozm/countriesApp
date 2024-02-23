@@ -13,6 +13,7 @@
 
   &__content {
     padding: 1rem;
+    background: $primary-color;
   }
 
   &__title {
@@ -39,9 +40,10 @@
 
     li {
       margin-bottom: 0.25rem;
+      @extend %Font-Light;
       span {
         display: inline-block;
-        margin-right: 0.25rem;
+        margin-right: 0.55rem;
         @extend %Font-Bold;
       }
     }
