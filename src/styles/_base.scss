@@ -8,3 +8,12 @@
   margin: 0 auto;
   padding: 0 2rem;
 }
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1rem;
+  font-size: 1.5rem;
+  color: $text-color;
+}

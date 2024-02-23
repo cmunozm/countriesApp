@@ -38,7 +38,13 @@ function HomePage() {
         onChangeRegion={handleChangeRegion}
         onChangeCountry={handleChangeCountry}
       />
-      {loading ? 'Loading...' : <CardList cards={cards} />}
+      {loading ? (
+        <div className='loading'>
+          <span>Loading...</span>
+        </div>
+      ) : (
+        <CardList cards={cards} />
+      )}
     </>
   );
 }
