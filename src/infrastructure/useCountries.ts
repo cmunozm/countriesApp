@@ -14,12 +14,7 @@ const useCountries = () => {
   const fuse = new Fuse(countries, fuseOptions);
 
   useEffect(() => {
-    useFetch('https://restcountries.com/v3.1/all')
-    .then(countries => {
-      setLoading(false)
-      setCountries(countries)
-      handleList(countries)
-    })
+    getAllCountries();
   }, [])
 
   const getRegions = (): string[] => {
@@ -45,6 +40,14 @@ const useCountries = () => {
     return filteredCountries 
   }
 
+  const getAllCountries = () => {
+    useFetch('https://restcountries.com/v3.1/all')
+    .then(countries => {
+      setLoading(false)
+      setCountries(countries)
+      handleList(countries)
+    })
+  }
 
 
   return {
@@ -52,7 +55,8 @@ const useCountries = () => {
     countries,
     getRegions,
     getByRegion,
-    getByCountry
+    getByCountry,
+    getAllCountries
   }
 }
 

@@ -4,6 +4,7 @@ import { CountriesAPI, Currencies } from '../../infrastructure/apiTypes';
 import Icon from '../icon/Icon';
 import { useContext } from 'react';
 import { themeContext } from '../../infrastructure/themeContext';
+import useCountries from '../../infrastructure/useCountries';
 
 const getCurrency = (cur: Currencies | undefined) => {
   let currency: string;
@@ -22,6 +23,10 @@ type CountryProps = {
 const Country = ({ countryData }: CountryProps) => {
   const params = useParams();
   const { countryList } = useContext(themeContext);
+  if (countryList?.length === 0 || !countryList) {
+    const { getAllCountries } = useCountries();
+    getAllCountries();
+  }
   const selectedContry = countryList?.filter(
     (item) => item.name?.common === params.country
   )[0];
@@ -109,7 +114,9 @@ const Country = ({ countryData }: CountryProps) => {
               </li>
             </ul>
             <div className='country__borders'>
-              <label>Border Countries:</label>
+              {countryInfo.borders && countryInfo.borders?.length > 0 && (
+                <label>Border Countries:</label>
+              )}
               {countryInfo.borders?.map((item) => (
                 <span key={item}>
                   <Link to={`/countries/${getCountryName(item)}`}>
