@@ -1,8 +1,8 @@
-import { CountriesAPI } from '../../infrastructure/apiTypes';
+import { CountriesAdapter } from '../../infrastructure/apiTypes';
 import Card from '../card/Card';
 
 type CardListProps = {
-  cards: CountriesAPI[];
+  cards: CountriesAdapter[];
 };
 
 const CardList = ({ cards }: CardListProps) => {
@@ -11,12 +11,12 @@ const CardList = ({ cards }: CardListProps) => {
       {cards.map((card) => {
         return (
           <Card
-            key={card.name?.common}
-            name={card.name?.common ?? ''}
-            population={card.population!}
+            key={card.name}
+            name={card.name || ''}
+            population={card.population || 0}
             region={card.region!}
-            capital={card.capital?.at(0)!}
-            urlImage={card.flags?.png!}
+            capital={card.capital?.at(0) || ''}
+            urlImage={card.flag || ''}
           />
         );
       })}

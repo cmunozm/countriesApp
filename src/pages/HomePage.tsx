@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import CardList from '../components/cardList/CardList';
 import Filters from '../components/filters/Filters';
-import { CountriesAPI } from '../infrastructure/apiTypes';
+import { CountriesAdapter } from '../infrastructure/apiTypes';
 import useCountries from '../infrastructure/useCountries';
 
 function HomePage() {
   const { loading, countries, getRegions, getByRegion, getByCountry } =
     useCountries();
   const regions = getRegions();
-  const [cards, setCards] = useState<CountriesAPI[]>([]);
+  const [cards, setCards] = useState<CountriesAdapter[]>([]);
 
   const handleChangeCountry = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchPattern = event.target.value;

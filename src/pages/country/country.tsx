@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { CountriesAPI, Currencies } from '../../infrastructure/apiTypes';
-import Icon from '../icon/Icon';
+import Icon from '../../components/icon/Icon';
 import { useContext } from 'react';
 import { themeContext } from '../../infrastructure/themeContext';
 import useCountries from '../../infrastructure/useCountries';
@@ -21,8 +21,11 @@ type CountryProps = {
 };
 
 const Country = ({ countryData }: CountryProps) => {
+  console.log('_____Country____');
   const params = useParams();
   const { countryList } = useContext(themeContext);
+
+  // TODO
   if (countryList?.length === 0 || !countryList) {
     const { getAllCountries } = useCountries();
     getAllCountries();
@@ -31,6 +34,7 @@ const Country = ({ countryData }: CountryProps) => {
     (item) => item.name?.common === params.country
   )[0];
   const countryInfo = countryData !== undefined ? countryData : selectedContry;
+  //******************** */
 
   if (countryInfo) {
     const currency = getCurrency(countryInfo.currencies);
@@ -59,6 +63,7 @@ const Country = ({ countryData }: CountryProps) => {
             <img
               src={countryInfo.flags?.png}
               alt={`Flag ${countryInfo.name?.common}`}
+              loading='lazy'
             />
           </div>
           <div>

@@ -1,3 +1,15 @@
+export interface CountriesAdapter {
+  name:         string;
+  population:   number;
+  region:       string;
+  subregion:    string;
+  capital:      string[];
+  tld:          string[];
+  currencies:   string[];
+  languages:    { [key: string]: string };
+  borders:      string[];
+  flag:        string;
+}
 export interface CountriesAPI {
   name?:         Name;
   tld?:          string[];

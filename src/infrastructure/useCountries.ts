@@ -1,13 +1,13 @@
 import Fuse from "fuse.js";
 import { useContext, useEffect, useState } from "react";
-import { CountriesAPI } from "./apiTypes";
+import { CountriesAPI, CountriesAdapter } from "./apiTypes";
 import { themeContext } from "./themeContext";
 import { useFetch } from "./useFetch";
 
 const useCountries = () => {
   const { handleList } = useContext(themeContext);
   const [loading, setLoading] = useState(true);
-  const [countries, setCountries] = useState<CountriesAPI[]>([]);
+  const [countries, setCountries] = useState<CountriesAdapter[]>([]);
   const fuseOptions = {
     keys: ['name.common'],
   };
@@ -44,9 +44,27 @@ const useCountries = () => {
     useFetch('https://restcountries.com/v3.1/all')
     .then(countries => {
       setLoading(false)
-      setCountries(countries)
+      setCountries(createContryAdapter(countries))
       handleList(countries)
     })
+  }
+
+  const createContryAdapter = (cointriesList: CountriesAPI[]): CountriesAdapter[] => {
+    const countriesAdapter = cointriesList.map(country => {
+      return {
+        name: country.name?.common || '',
+        population: country.population || 0,
+        region: country.region || '',
+        subregion: country.subregion || '',
+        capital: country.capital || [],
+        tld: country.tld || [],
+        currencies: country.currencies as string[] || [],
+        languages: country.languages || {},
+        borders: country.borders || [],
+        flag: country.flags?.svg || '',
+      }
+    })
+    return countriesAdapter;
   }
 
 
