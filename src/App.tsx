@@ -1,9 +1,10 @@
 import Header from './components/header/Header';
-import HomePage from './pages/HomePage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Country from './pages/country/country';
-import { Suspense, useContext } from 'react';
+import { lazy, Suspense, useContext } from 'react';
 import { themeContext } from './infrastructure/themeContext';
+
+const Country = lazy(() => import('./pages/country/country'));
+const HomePage = lazy(() => import('./pages/HomePage'));
 
 const router = createBrowserRouter([
   {

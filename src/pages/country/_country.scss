@@ -44,6 +44,10 @@
     }
   }
 
+  &__data {
+    width: 100%;
+  }
+
   &__name {
     font-size: 1.5rem;
     @extend %Font-Bold;

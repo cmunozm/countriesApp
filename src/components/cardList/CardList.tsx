@@ -6,6 +6,7 @@ type CardListProps = {
 };
 
 const CardList = ({ cards }: CardListProps) => {
+  console.log('_____CardList____');
   return (
     <section className='card-list'>
       {cards.map((card) => {

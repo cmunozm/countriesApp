@@ -5,10 +5,11 @@ export interface CountriesAdapter {
   subregion:    string;
   capital:      string[];
   tld:          string[];
-  currencies:   string[];
+  currencies:   Currencies;
   languages:    { [key: string]: string };
   borders:      string[];
-  flag:        string;
+  flag:         string;
+  cca3:         string;
 }
 export interface CountriesAPI {
   name?:         Name;

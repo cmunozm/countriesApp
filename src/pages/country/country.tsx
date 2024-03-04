@@ -1,12 +1,10 @@
 import { Link, useParams } from 'react-router-dom';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { CountriesAPI, Currencies } from '../../infrastructure/apiTypes';
+import { CountriesAdapter, Currencies } from '../../infrastructure/apiTypes';
 import Icon from '../../components/icon/Icon';
-import { useContext } from 'react';
-import { themeContext } from '../../infrastructure/themeContext';
 import useCountries from '../../infrastructure/useCountries';
 
-const getCurrency = (cur: Currencies | undefined) => {
+const getCurrency = (cur: Currencies) => {
   let currency: string;
   if (cur) {
     currency = Object.keys(cur).at(0) || '';
@@ -17,36 +15,30 @@ const getCurrency = (cur: Currencies | undefined) => {
 };
 
 type CountryProps = {
-  countryData?: CountriesAPI;
+  countryData?: CountriesAdapter;
 };
 
 const Country = ({ countryData }: CountryProps) => {
   console.log('_____Country____');
   const params = useParams();
-  const { countryList } = useContext(themeContext);
+  const { countries } = useCountries();
 
-  // TODO
-  if (countryList?.length === 0 || !countryList) {
-    const { getAllCountries } = useCountries();
-    getAllCountries();
-  }
-  const selectedContry = countryList?.filter(
-    (item) => item.name?.common === params.country
+  const selectedContry = countries?.filter(
+    (item) => item.name === params.country
   )[0];
   const countryInfo = countryData !== undefined ? countryData : selectedContry;
-  //******************** */
 
   if (countryInfo) {
     const currency = getCurrency(countryInfo.currencies);
     const leng: string[] = Object.values(countryInfo.languages || {});
 
     const getCountryName = (cca3: string) => {
-      const border: CountriesAPI | undefined = countryList?.filter(
+      const border: CountriesAdapter | undefined = countries?.filter(
         (item) => item.cca3 === cca3
       )[0];
 
       if (border) {
-        return border.name?.common;
+        return border.name;
       } else {
         return '';
       }
@@ -61,18 +53,18 @@ const Country = ({ countryData }: CountryProps) => {
         <section className='country__info'>
           <div className='country__flag'>
             <img
-              src={countryInfo.flags?.png}
-              alt={`Flag ${countryInfo.name?.common}`}
+              src={countryInfo.flag}
+              alt={`Flag ${countryInfo.name}`}
               loading='lazy'
             />
           </div>
-          <div>
-            <h2 className='country__name'>{countryInfo.name?.common}</h2>
+          <div className='country__data'>
+            <h2 className='country__name'>{countryInfo.name}</h2>
             <ul className='country__details'>
               <li>
                 <>
                   <span>Native Name:</span>
-                  {countryInfo.name?.official}
+                  {countryInfo.name}
                 </>
               </li>
               <li>

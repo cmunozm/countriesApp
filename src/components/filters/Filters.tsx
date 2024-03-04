@@ -12,6 +12,7 @@ const Filters = ({
   onChangeRegion,
   onChangeCountry,
 }: FiltersProps) => {
+  console.log('_____Filters____');
   return (
     <section className='filters'>
       <Search onChangeCountry={onChangeCountry} />

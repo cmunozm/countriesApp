@@ -4,17 +4,31 @@ import { CountriesAPI, CountriesAdapter } from "./apiTypes";
 import { themeContext } from "./themeContext";
 import { useFetch } from "./useFetch";
 
+
 const useCountries = () => {
   const { handleList } = useContext(themeContext);
   const [loading, setLoading] = useState(true);
   const [countries, setCountries] = useState<CountriesAdapter[]>([]);
   const fuseOptions = {
-    keys: ['name.common'],
+    keys: ['name'],
   };
   const fuse = new Fuse(countries, fuseOptions);
 
-  useEffect(() => {
-    getAllCountries();
+  useEffect(() => {    
+    async function fetchData() {
+      setLoading(true);
+      try {
+        const countries = await useFetch('https://restcountries.com/v3.1/all');
+        setCountries(createContryAdapter(countries));
+        handleList(countries)
+        console.log('******************fetched******************')
+      } catch {
+        throw new Error('Error');
+      }
+      setLoading(false)
+    } 
+    
+    fetchData();
   }, [])
 
   const getRegions = (): string[] => {
@@ -40,15 +54,6 @@ const useCountries = () => {
     return filteredCountries 
   }
 
-  const getAllCountries = () => {
-    useFetch('https://restcountries.com/v3.1/all')
-    .then(countries => {
-      setLoading(false)
-      setCountries(createContryAdapter(countries))
-      handleList(countries)
-    })
-  }
-
   const createContryAdapter = (cointriesList: CountriesAPI[]): CountriesAdapter[] => {
     const countriesAdapter = cointriesList.map(country => {
       return {
@@ -58,23 +63,22 @@ const useCountries = () => {
         subregion: country.subregion || '',
         capital: country.capital || [],
         tld: country.tld || [],
-        currencies: country.currencies as string[] || [],
+        currencies: country.currencies || {},
         languages: country.languages || {},
         borders: country.borders || [],
-        flag: country.flags?.svg || '',
+        flag: country.flags?.png || '',
+        cca3: country.cca3 || '',
       }
     })
     return countriesAdapter;
   }
-
 
   return {
     loading,
     countries,
     getRegions,
     getByRegion,
-    getByCountry,
-    getAllCountries
+    getByCountry,    
   }
 }
 

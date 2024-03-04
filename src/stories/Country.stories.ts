@@ -18,11 +18,7 @@ type Story = StoryObj<typeof meta>;
 export const DefaultContry: Story = {
   args: {
     countryData: {
-      name: {
-        common: "Belgium",
-        official: "Kingdom of Belgium",
-        nativeName: {}
-      },
+      name: "Belgium",
       tld: [],
       cca2: "BE",
       ccn3: "056",
@@ -54,7 +50,6 @@ export const DefaultContry: Story = {
         "NLD"
       ],
       area: 30528,
-      flag: "🇧🇪",
       maps: {
         googleMaps: "https://goo.gl/maps/UQQzat85TCtPRXAL8",
         openStreetMaps: "https://www.openstreetmap.org/relation/52411"
@@ -64,11 +59,7 @@ export const DefaultContry: Story = {
         2018: 27.2
       },
     fifa: "BEL",
-      flags: {
-        png: "https://flagcdn.com/w320/be.png",
-        svg: "https://flagcdn.com/be.svg",
-        alt: "The flag of Belgium is composed of three equal vertical bands of black, yellow and red."
-      },
+      flag: "https://flagcdn.com/w320/be.png",
       coatOfArms: {
         png: "https://mainfacts.com/media/images/coats_of_arms/be.png",
         svg: "https://mainfacts.com/media/images/coats_of_arms/be.svg"
