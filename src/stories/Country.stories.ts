@@ -18,18 +18,18 @@ type Story = StoryObj<typeof meta>;
 export const DefaultContry: Story = {
   args: {
     countryData: {
-      name: "Belgium",
-      tld: [],
-      cca2: "BE",
-      ccn3: "056",
+      name: "Belgium",      
       cca3: "BEL",
-      cioc: "BEL",
-      independent: true,
-      unMember: true,
-      currencies: {},
-      idd: {},
-      capital: [],
-      altSpellings: [],
+      currencies: {
+        "EUR": {
+        "name": "Euro",
+        "symbol": "€"
+        }
+        },      
+      capital: ["Brussels"],    
+      tld: [
+        ".be"
+        ],
       region: Region.Europe,
       subregion: "Western Europe",
       languages: {
@@ -37,41 +37,13 @@ export const DefaultContry: Story = {
         fra: "French",
         nld: "Dutch"
       },
-      translations: {},
-      latlng: [
-        50.83333333,
-        4
-      ],
-      landlocked: false,
       borders: [
         "FRA",
         "DEU",
         "LUX",
         "NLD"
       ],
-      area: 30528,
-      maps: {
-        googleMaps: "https://goo.gl/maps/UQQzat85TCtPRXAL8",
-        openStreetMaps: "https://www.openstreetmap.org/relation/52411"
-      },
       population: 11555997,
-      gini: {
-        2018: 27.2
-      },
-    fifa: "BEL",
       flag: "https://flagcdn.com/w320/be.png",
-      coatOfArms: {
-        png: "https://mainfacts.com/media/images/coats_of_arms/be.png",
-        svg: "https://mainfacts.com/media/images/coats_of_arms/be.svg"
-      },      
-      capitalInfo: {
-        latlng: [
-          50.83,
-          4.33
-        ]
-      },
-      postalCode: {
-        format: "####",
-      }
     }}
   }
