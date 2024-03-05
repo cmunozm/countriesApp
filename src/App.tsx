@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { lazy, Suspense, useContext } from 'react';
 import { themeContext } from './infrastructure/themeContext';
 
-const Country = lazy(() => import('./pages/country/country'));
+const Country = lazy(() => import('./pages/country/Country'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 
 const router = createBrowserRouter([

@@ -127,7 +127,11 @@ const Country = ({ countryData }: CountryProps) => {
       </div>
     );
   } else {
-    return <h1>Country not found</h1>;
+    return (
+      <div className='loading'>
+        <span>Loading...</span>
+      </div>
+    );
   }
 };
 
