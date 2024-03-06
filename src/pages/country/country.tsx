@@ -19,7 +19,6 @@ type CountryProps = {
 };
 
 const Country = ({ countryData }: CountryProps) => {
-  console.log('_____Country____');
   const params = useParams();
   const { countries } = useCountries();
 

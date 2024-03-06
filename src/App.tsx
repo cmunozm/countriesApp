@@ -19,7 +19,6 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  console.log('_____App____');
   const { theme } = useContext(themeContext);
   return (
     <div className={theme.isDark ? 'main dark-mode' : 'main'}>

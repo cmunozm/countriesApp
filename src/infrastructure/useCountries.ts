@@ -21,7 +21,6 @@ const useCountries = () => {
         const countries = await useFetch('https://restcountries.com/v3.1/all');
         setCountries(createContryAdapter(countries));
         handleList(countries)
-        console.log('******************fetched******************')
       } catch {
         throw new Error('Error');
       }
