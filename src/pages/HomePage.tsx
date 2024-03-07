@@ -18,6 +18,7 @@ function HomePage() {
   const currentCountries = cards.slice(firstIndex, lastIndex);
 
   const handleChangeCountry = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrentPage(1);
     const searchPattern = event.target.value;
     if (searchPattern !== '') {
       setCards(getByCountry(searchPattern));
@@ -35,6 +36,7 @@ function HomePage() {
   const handleChangeRegion = ({
     target,
   }: React.ChangeEvent<HTMLSelectElement>) => {
+    setCurrentPage(1);
     setCards(getByRegion(target.value));
   };
 

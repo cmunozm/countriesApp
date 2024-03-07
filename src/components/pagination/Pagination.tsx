@@ -9,7 +9,7 @@ const Pagination = ({ totalPages, onChangePage }: paginationProps) => {
   const pages: number[] = [];
   const [activePage, setActivePage] = useState(1);
 
-  for (let index = 1; index < totalPages; index++) {
+  for (let index = 1; index <= totalPages; index++) {
     pages.push(index);
   }
   const handleChange = (page: number) => {

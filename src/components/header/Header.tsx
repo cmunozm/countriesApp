@@ -1,14 +1,13 @@
-import Toggle from '../toggle/Toggle';
-
 type HeaderProps = {
   title: string;
+  toggle: JSX.Element;
 };
 
-const Header = ({ title }: HeaderProps) => {
+const Header = ({ title, toggle }: HeaderProps) => {
   return (
     <header className='header'>
       <a href='/'>{title}</a>
-      <Toggle />
+      {toggle}
     </header>
   );
 };
