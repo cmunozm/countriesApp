@@ -15,13 +15,13 @@ export default defineConfig({
     globals: true,
     coverage: {
       provider: 'v8',
+      exclude: [        
+        ...configDefaults.exclude,
+        'src/App.tsx',
+        'src/main.tsx',
+        'src/stories/**',
+        'src/pages/HomePage.tsx',
+      ]
     },
-    exclude: [        
-      ...configDefaults.exclude,
-      'src/App.tsx',
-      'src/main.tsx',
-      'src/stories/**',
-      'src/pages/HomePage.tsx',
-    ]
   }
 })
