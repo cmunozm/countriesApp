@@ -1,5 +1,8 @@
-import Toggle from './Toggle';
+import { vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import Toggle from './Toggle';
+import { themeContext } from '../../infrastructure/themeContext';
 
 describe('Toggle', () => {
   beforeEach(() => {
@@ -11,11 +14,20 @@ describe('Toggle', () => {
     expect(screen.getByRole('checkbox')).toBeDefined();
   });
 
-  /*   test('should change the text when is clicked', () => {
-    const input = screen.getByRole('checkbox');
-    act(() => {
-      fireEvent.click(input);
-    });
+  test('should render the component with dark theme', () => {
+    const mockContextValue = {
+      theme: { isDark: true },
+      handleTheme: vi.fn(),
+      handleList: vi.fn(),
+    };
+    vi.spyOn(React, 'useContext').mockReturnValue({ mockContextValue });
+
+    render(
+      <themeContext.Provider value={mockContextValue}>
+        <Toggle />
+      </themeContext.Provider>
+    );
+
     expect(screen.getByText('Dark Mode')).toBeDefined();
-  }); */
+  });
 });

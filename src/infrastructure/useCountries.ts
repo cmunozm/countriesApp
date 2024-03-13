@@ -6,6 +6,7 @@ import { useFetch } from "./useFetch";
 
 
 const useCountries = () => {
+  console.log('_______useCountries_______');
   const { handleList } = useContext(themeContext);
   const [loading, setLoading] = useState(true);
   const [countries, setCountries] = useState<CountriesAdapter[]>([]);
@@ -14,21 +15,24 @@ const useCountries = () => {
   };
   const fuse = new Fuse(countries, fuseOptions);
 
-  useEffect(() => {    
-    async function fetchData() {
+  useEffect(() => { 
+    console.log('_______useEffect_______');
+    function fetchData() {
       setLoading(true);
-      try {
-        const countries = await useFetch('https://restcountries.com/v3.1/all');
-        setCountries(createContryAdapter(countries));
-        handleList(countries)
-      } catch {
-        throw new Error('Error');
-      }
-      setLoading(false)
+      useFetch('https://restcountries.com/v3.1/all')
+        .then(countries => {
+          setCountries(createContryAdapter(countries));
+          handleList(countries);
+          setLoading(false);
+          console.log('_______data collected_______');
+        })
+        .catch(error => {
+          throw new Error(error.message);
+        });
     } 
     
     fetchData();
-  }, [])
+  }, []);
 
   const getRegions = (): string[] => {
     const regions = new Set(countries.map((country) => country.region));

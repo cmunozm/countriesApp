@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">98.4% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>123/123</span>
+                <span class='fraction'>123/125</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>6/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">98.4% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>123/123</span>
+                <span class='fraction'>123/125</span>
             </div>
         
             
@@ -186,7 +186,9 @@
 <a name='L121'></a><a href='#L121'>121</a>
 <a name='L122'></a><a href='#L122'>122</a>
 <a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -211,6 +213,9 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -299,7 +304,6 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -334,101 +338,103 @@ const Country = ({ countryData }: CountryProps) =&gt; {
   )[0];
   const countryInfo = countryData !== undefined ? <span class="branch-0 cbranch-no" title="branch not covered" >countryData : selectedContry;</span>
 &nbsp;
-  if (countryInfo) {
-    const currency = getCurrency(countryInfo.currencies);
-    const leng: string[] = Object.values(countryInfo.languages);
+  if (!countryInfo) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >    return null;</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-    const getCountryName = (cca3: string) =&gt; {
-      const border: CountriesAdapter | undefined = countries?.filter(
-        (item) =&gt; item.cca3 === cca3
-      )[0];
+  const currency = getCurrency(countryInfo.currencies);
+  const leng: string[] = Object.values(countryInfo.languages);
 &nbsp;
-      return <span class="branch-0 cbranch-no" title="branch not covered" >border?.name;</span>
-    };
+  const getCountryName = (cca3: string) =&gt; {
+    const border: CountriesAdapter | undefined = countries?.filter(
+      (item) =&gt; item.cca3 === cca3
+    )[0];
 &nbsp;
-    return (
-      &lt;div className='country'&gt;
-        &lt;Link to='/' className='country__btn'&gt;
-          &lt;Icon icon={faArrowLeft} /&gt;
-          Back
-        &lt;/Link&gt;
-        &lt;section className='country__info'&gt;
-          &lt;div className='country__flag'&gt;
-            &lt;img
-              src={countryInfo.flag}
-              alt={`Flag ${countryInfo.name}`}
-              loading='lazy'
-            /&gt;
+    return <span class="branch-0 cbranch-no" title="branch not covered" >border?.name;</span>
+  };
+&nbsp;
+  return (
+    &lt;div className='country'&gt;
+      &lt;Link to='/' className='country__btn'&gt;
+        &lt;Icon icon={faArrowLeft} /&gt;
+        Back
+      &lt;/Link&gt;
+      &lt;section className='country__info'&gt;
+        &lt;div className='country__flag'&gt;
+          &lt;img
+            src={countryInfo.flag}
+            alt={`Flag ${countryInfo.name}`}
+            loading='lazy'
+          /&gt;
+        &lt;/div&gt;
+        &lt;div className='country__data'&gt;
+          &lt;h2 className='country__name'&gt;{countryInfo.name}&lt;/h2&gt;
+          &lt;ul className='country__details'&gt;
+            &lt;li&gt;
+              &lt;&gt;
+                &lt;span&gt;Native Name:&lt;/span&gt;
+                {countryInfo.name}
+              &lt;/&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;&gt;
+                &lt;span&gt;Population:&lt;/span&gt;
+                {countryInfo.population?.toLocaleString()}
+              &lt;/&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;&gt;
+                &lt;span&gt;Region:&lt;/span&gt;
+                {countryInfo.region}
+              &lt;/&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;&gt;
+                &lt;span&gt;Sub Region:&lt;/span&gt;
+                {countryInfo.subregion}
+              &lt;/&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;&gt;
+                &lt;span&gt;Capital:&lt;/span&gt;
+                {countryInfo.capital}
+              &lt;/&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;&gt;
+                &lt;span&gt;Top Level Domain:&lt;/span&gt;
+                {countryInfo.tld?.at(0)}
+              &lt;/&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;&gt;
+                &lt;span&gt;Currencies:&lt;/span&gt;
+                {currency}
+              &lt;/&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;&gt;
+                &lt;span&gt;Lenguages&lt;/span&gt;
+                {leng.join(', ')}
+              &lt;/&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div className='country__borders'&gt;
+            {countryInfo.borders &amp;&amp; countryInfo.borders?.length &gt; 0 &amp;&amp; (
+              &lt;label&gt;Border Countries:&lt;/label&gt;
+            )}
+            {countryInfo.borders?.map((item) =&gt; (
+              &lt;span key={item}&gt;
+                &lt;Link to={`/countries/${getCountryName(item)}`}&gt;
+                  {getCountryName(item)}
+                &lt;/Link&gt;
+              &lt;/span&gt;
+            ))}
           &lt;/div&gt;
-          &lt;div className='country__data'&gt;
-            &lt;h2 className='country__name'&gt;{countryInfo.name}&lt;/h2&gt;
-            &lt;ul className='country__details'&gt;
-              &lt;li&gt;
-                &lt;&gt;
-                  &lt;span&gt;Native Name:&lt;/span&gt;
-                  {countryInfo.name}
-                &lt;/&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;&gt;
-                  &lt;span&gt;Population:&lt;/span&gt;
-                  {countryInfo.population?.toLocaleString()}
-                &lt;/&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;&gt;
-                  &lt;span&gt;Region:&lt;/span&gt;
-                  {countryInfo.region}
-                &lt;/&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;&gt;
-                  &lt;span&gt;Sub Region:&lt;/span&gt;
-                  {countryInfo.subregion}
-                &lt;/&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;&gt;
-                  &lt;span&gt;Capital:&lt;/span&gt;
-                  {countryInfo.capital}
-                &lt;/&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;&gt;
-                  &lt;span&gt;Top Level Domain:&lt;/span&gt;
-                  {countryInfo.tld?.at(0)}
-                &lt;/&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;&gt;
-                  &lt;span&gt;Currencies:&lt;/span&gt;
-                  {currency}
-                &lt;/&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;&gt;
-                  &lt;span&gt;Lenguages&lt;/span&gt;
-                  {leng.join(', ')}
-                &lt;/&gt;
-              &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;div className='country__borders'&gt;
-              {countryInfo.borders &amp;&amp; countryInfo.borders?.length &gt; 0 &amp;&amp; (
-                &lt;label&gt;Border Countries:&lt;/label&gt;
-              )}
-              {countryInfo.borders?.map((item) =&gt; (
-                &lt;span key={item}&gt;
-                  &lt;Link to={`/countries/${getCountryName(item)}`}&gt;
-                    {getCountryName(item)}
-                  &lt;/Link&gt;
-                &lt;/span&gt;
-              ))}
-            &lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/section&gt;
-      &lt;/div&gt;
-    );
-  }
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  );
 };
 &nbsp;
 export default Country;
@@ -439,7 +445,7 @@ export default Country;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-08T19:46:10.752Z
+                at 2024-03-13T19:02:41.105Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

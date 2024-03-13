@@ -6,7 +6,7 @@ import { themeContext } from './infrastructure/themeContext';
 import Toggle from './components/toggle/Toggle';
 
 const Country = lazy(() => import('./pages/country/Country'));
-const HomePage = lazy(() => import('./pages/HomePage'));
+const HomePage = lazy(() => import('./pages/homePage/HomePage'));
 
 const router = createBrowserRouter([
   {
