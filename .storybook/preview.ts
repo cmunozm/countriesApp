@@ -1,4 +1,3 @@
-/* v8 ignore next 18 */
 import type { Preview } from "@storybook/react";
 import '../src/index.scss';
 

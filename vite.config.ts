@@ -20,8 +20,9 @@ export default defineConfig({
         'src/App.tsx',
         'src/main.tsx',
         'src/stories/**',
-        'src/pages/HomePage.tsx',
+        'src/pages/**',
+        '.storybook',
       ]
     },
-  }
+  },
 })

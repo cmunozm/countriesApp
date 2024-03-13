@@ -1,5 +1,5 @@
 /* v8 ignore next  45*/
-import { createContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { CountriesAPI } from './apiTypes';
 
 // ======= Context =======
@@ -20,7 +20,7 @@ export const themeContext = createContext<ThemeContextInterface>(
 
 // ======= Provider =======
 type ThemeProviderProps = {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | JSX.Element[] | React.ReactNode;
 };
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {

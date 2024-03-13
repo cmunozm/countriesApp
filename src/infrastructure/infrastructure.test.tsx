@@ -1,5 +1,6 @@
-import { renderHook } from '@testing-library/react';
+import { renderHook, waitFor } from '@testing-library/react';
 import useCountries from './useCountries';
+import ThemeProvider from '../infrastructure/themeContext';
 /*
 const countriesData = [
   {
@@ -33,10 +34,23 @@ const countriesData = [
 
 describe('UseCountries', () => {
   test('Test Fetch', async () => {
-    const { result } = renderHook(() => useCountries());
+    /*     const createWrapper = (Wrapper: React.JSXElementConstructor ) => {
+      return function CreatedWrapper({ children }:{children: React.ReactNode}) {
+        return  <Wrapper>{children}</Wrapper>;
+      };
+    } */
+
+    const { result } = renderHook(() => useCountries(), {
+      wrapper: ({ children }: { children: React.ReactNode }) => (
+        <ThemeProvider>{children}</ThemeProvider>
+      ),
+    });
+
+    await waitFor(() => {
+      expect(result.current.countries.length).toBe(250);
+    });
 
     console.log(result.current);
-    // expect(result.current.countries).toBeDefined();
   });
 });
 

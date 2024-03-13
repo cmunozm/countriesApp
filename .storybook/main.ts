@@ -1,4 +1,3 @@
-/* v8 ignore next 23 */
 import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {

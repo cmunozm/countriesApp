@@ -1,6 +1,6 @@
 import Country from './Country';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter, Route } from 'react-router-dom';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 describe('Country', () => {
   test('Should render country component', () => {
@@ -74,5 +74,14 @@ describe('Country', () => {
     expect(screen.getByText('Capital:')).toBeDefined();
     expect(screen.getByText('Brussels')).toBeDefined();
     expect(screen.getByText('Currencies:')).toBeDefined();
+  });
+
+  test('Should get data from url when props are undefined', () => {
+    const country = render(
+      <MemoryRouter initialEntries={['/countries/Belgium']}>
+        <Country countryData={undefined} />
+      </MemoryRouter>
+    );
+    console.log(country.baseElement);
   });
 });

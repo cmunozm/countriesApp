@@ -1,4 +1,3 @@
-/* v8 ignore next 39 */
 import Header from './components/header/Header';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { lazy, Suspense, useContext } from 'react';

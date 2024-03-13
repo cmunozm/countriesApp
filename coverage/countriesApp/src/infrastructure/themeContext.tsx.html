@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.81% </span>
+                <span class="strong">95.45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/44</span>
+                <span class='fraction'>42/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.81% </span>
+                <span class="strong">95.45% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/44</span>
+                <span class='fraction'>42/44</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -132,27 +132,27 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* v8 ignore next  45*/
-import { createContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { CountriesAPI } from './apiTypes';
 &nbsp;
 // ======= Context =======
@@ -163,8 +163,8 @@ export type Theme = {
 export interface ThemeContextInterface {
   countryList?: CountriesAPI[];
   theme: Theme;
-  handleTheme?: () =&gt; void;
-  handleList?: (list: CountriesAPI[]) =&gt; void;
+  handleTheme: () =&gt; void;
+  handleList: (list: CountriesAPI[]) =&gt; void;
 }
 &nbsp;
 export const themeContext = createContext&lt;ThemeContextInterface&gt;(
@@ -173,28 +173,28 @@ export const themeContext = createContext&lt;ThemeContextInterface&gt;(
 &nbsp;
 // ======= Provider =======
 type ThemeProviderProps = {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | JSX.Element[] | React.ReactNode;
 };
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export default function ThemeProvider({ children }: ThemeProviderProps) {</span></span>
-<span class="cstat-no" title="statement not covered" >  const [theme, setTheme] = useState&lt;Theme&gt;({ isDark: false });</span>
-<span class="cstat-no" title="statement not covered" >  const [countryList, setCountryList] = useState&lt;CountriesAPI[]&gt;();</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const handleTheme = () =&gt; {</span>
+export default function ThemeProvider({ children }: ThemeProviderProps) {
+  const [theme, setTheme] = useState&lt;Theme&gt;({ isDark: false });
+  const [countryList, setCountryList] = useState&lt;CountriesAPI[]&gt;();
+&nbsp;
+  const handleTheme = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    setTheme({ isDark: !theme.isDark });</span>
 <span class="cstat-no" title="statement not covered" >  };</span>
-<span class="cstat-no" title="statement not covered" >  const handleList = (list: CountriesAPI[]) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setCountryList(list);</span>
-<span class="cstat-no" title="statement not covered" >  };</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;themeContext.Provider</span>
-<span class="cstat-no" title="statement not covered" >      value={{ countryList, theme, handleTheme, handleList }}</span>
-<span class="cstat-no" title="statement not covered" >    &gt;</span>
-<span class="cstat-no" title="statement not covered" >      {children}</span>
-<span class="cstat-no" title="statement not covered" >    &lt;/themeContext.Provider&gt;</span>
-<span class="cstat-no" title="statement not covered" >  );</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+  const handleList = (list: CountriesAPI[]) =&gt; {
+    setCountryList(list);
+  };
+&nbsp;
+  return (
+    &lt;themeContext.Provider
+      value={{ countryList, theme, handleTheme, handleList }}
+    &gt;
+      {children}
+    &lt;/themeContext.Provider&gt;
+  );
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -202,7 +202,7 @@ type ThemeProviderProps = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-13T19:02:41.105Z
+                at 2024-03-13T22:02:33.230Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

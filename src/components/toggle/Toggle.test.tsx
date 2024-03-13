@@ -5,11 +5,9 @@ import Toggle from './Toggle';
 import { themeContext } from '../../infrastructure/themeContext';
 
 describe('Toggle', () => {
-  beforeEach(() => {
-    render(<Toggle />);
-  });
-
   test('Should render toggle component', () => {
+    render(<Toggle />);
+
     expect(screen.getByText('Light Mode')).toBeDefined();
     expect(screen.getByRole('checkbox')).toBeDefined();
   });
