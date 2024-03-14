@@ -1,6 +1,7 @@
 import Country from './Country';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import ThemeProvider from '../../infrastructure/themeContext';
 
 describe('Country', () => {
   test('Should render country component', () => {
@@ -76,12 +77,21 @@ describe('Country', () => {
     expect(screen.getByText('Currencies:')).toBeDefined();
   });
 
-  test('Should get data from url when props are undefined', () => {
-    const country = render(
-      <MemoryRouter initialEntries={['/countries/Belgium']}>
-        <Country countryData={undefined} />
-      </MemoryRouter>
+  test('Should get data from url when props are undefined', async () => {
+    render(
+      <ThemeProvider>
+        <MemoryRouter initialEntries={['/countries/Belgium']}>
+          <Routes>
+            <Route path='/countries/Belgium' element={<Country />} />
+          </Routes>
+        </MemoryRouter>
+      </ThemeProvider>
     );
-    console.log(country.baseElement);
+
+    /*  await waitFor(() => {
+      expect(expect(screen.getAllByText('Belgium').length).toBe(2));
+    }); */
+
+    // expect(screen.getAllByText('Belgium')).toBeDefined();
   });
 });

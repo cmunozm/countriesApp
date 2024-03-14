@@ -6,7 +6,6 @@ import { useFetch } from "./useFetch";
 
 
 const useCountries = () => {
-  console.log('_______useCountries_______');
   const { handleList } = useContext(themeContext);
   const [loading, setLoading] = useState(true);
   const [countries, setCountries] = useState<CountriesAdapter[]>([]);
@@ -16,7 +15,6 @@ const useCountries = () => {
   const fuse = new Fuse(countries, fuseOptions);
 
   useEffect(() => { 
-    console.log('_______useEffect_______');
     function fetchData() {
       setLoading(true);
       useFetch('https://restcountries.com/v3.1/all')
@@ -24,7 +22,6 @@ const useCountries = () => {
           setCountries(createContryAdapter(countries));
           handleList(countries);
           setLoading(false);
-          console.log('_______data collected_______');
         })
         .catch(error => {
           throw new Error(error.message);

@@ -1,4 +1,3 @@
-/* v8 ignore next  45*/
 import React, { createContext, useState } from 'react';
 import { CountriesAPI } from './apiTypes';
 

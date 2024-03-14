@@ -1,4 +1,3 @@
-/* v8 ignore next 316 */
 export interface CountriesAdapter {
   name:         string;
   population:   number;

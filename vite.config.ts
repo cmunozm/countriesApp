@@ -20,8 +20,12 @@ export default defineConfig({
         'src/App.tsx',
         'src/main.tsx',
         'src/stories/**',
-        'src/pages/**',
+        'src/pages/homePage/HomePage.tsx',
         '.storybook',
+        'src/infrastructure/apiTypes.ts',
+        'src/infrastructure/themeContext.tsx',
+        '.eslintrc.cjs',
+        'src/vite-env.d.ts',
       ]
     },
   },

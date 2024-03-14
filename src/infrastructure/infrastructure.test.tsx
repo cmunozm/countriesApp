@@ -33,13 +33,7 @@ const countriesData = [
 */
 
 describe('UseCountries', () => {
-  test('Test Fetch', async () => {
-    /*     const createWrapper = (Wrapper: React.JSXElementConstructor ) => {
-      return function CreatedWrapper({ children }:{children: React.ReactNode}) {
-        return  <Wrapper>{children}</Wrapper>;
-      };
-    } */
-
+  test('should get countries data', async () => {
     const { result } = renderHook(() => useCountries(), {
       wrapper: ({ children }: { children: React.ReactNode }) => (
         <ThemeProvider>{children}</ThemeProvider>
@@ -49,27 +43,5 @@ describe('UseCountries', () => {
     await waitFor(() => {
       expect(result.current.countries.length).toBe(250);
     });
-
-    console.log(result.current);
   });
 });
-
-/*
-  test('test', () => {
-    const { result } = renderHook(() => {
-      const [name, setName] = React.useState('');
-      console.log('name::', name);
-  
-      React.useEffect(() => {
-        setName('Alice');
-      }, []);
-  
-      return name;
-    });
-  
-    console.log('fuera');
-    expect(result.current).toBe('Alice');
-  }); 
-});
-
-*/
