@@ -3,6 +3,7 @@ import Dropdown from '../components/dropdown/Dropdown';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Dropdown',
+  tags: ['autodocs'],
   component: Dropdown,
   parameters: {
     layout: 'centered',

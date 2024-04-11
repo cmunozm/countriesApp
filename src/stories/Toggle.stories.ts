@@ -3,6 +3,7 @@ import Toggle from '../components/toggle/Toggle';
 
 const meta:Meta<typeof Toggle> = {
   title: 'Toggle',
+  tags: ['autodocs'],
   component: Toggle,
   parameters: {
     layout: 'centered',

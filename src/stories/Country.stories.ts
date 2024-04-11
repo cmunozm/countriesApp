@@ -5,6 +5,7 @@ import { withRouter } from 'storybook-addon-react-router-v6';
 
 const meta: Meta<typeof Country> = {
   title: 'Country',
+  tags: ['autodocs'],
   component: Country,
   parameters: {
     layout: 'centered',

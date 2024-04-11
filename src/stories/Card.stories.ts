@@ -4,6 +4,7 @@ import { withRouter } from 'storybook-addon-react-router-v6';
 
 const meta: Meta<typeof Card> = {
   title: 'Card',
+  tags: ['autodocs'],
   component: Card,
   parameters: {    
     layout: 'centered',
