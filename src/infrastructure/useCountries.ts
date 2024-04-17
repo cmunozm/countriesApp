@@ -11,11 +11,12 @@ const useCountries = () => {
   const [countries, setCountries] = useState<CountriesAdapter[]>([]);
   const fuseOptions = {
     keys: ['name'],
+    threshold: 0.1,
   };
   const fuse = new Fuse(countries, fuseOptions);
 
   useEffect(() => { 
-    function fetchData() {
+    function FetchData() {
       setLoading(true);
       useFetch('https://restcountries.com/v3.1/all')
         .then(countries => {
@@ -28,7 +29,7 @@ const useCountries = () => {
         });
     } 
     
-    fetchData();
+    FetchData();
   }, []);
 
   const getRegions = (): string[] => {
