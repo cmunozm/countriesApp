@@ -2,7 +2,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Link } from 'react-router-dom';
 import Icon from '../icon/Icon';
 
-type buttonProps = {
+export type buttonProps = {
   /**Button text */
   description: string;
   /**Icon on the left side of the button  */

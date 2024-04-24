@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Button from '../components/button/button';
+import Button from '../components/button/Button';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { withRouter } from 'storybook-addon-react-router-v6';
 

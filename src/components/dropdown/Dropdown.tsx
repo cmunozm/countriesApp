@@ -1,7 +1,9 @@
 import React from 'react';
 
 type DropdownProps = {
+  /** sdfsdfsdf */
   options: string[];
+  /**sdfsdfsdf */
   firstOption: string;
   onChangeRegion: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };

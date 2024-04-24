@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Borders from '../components/borders/borders';
+import Borders from '../components/borders/Borders';
 import { withRouter } from 'storybook-addon-react-router-v6';
 
 const meta:Meta<typeof Borders> = {

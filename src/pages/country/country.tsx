@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { CountriesAdapter, Currencies } from '../../infrastructure/apiTypes';
-import Button from '../../components/button/button';
 import useCountries from '../../infrastructure/useCountries';
 import List from '../../components/list/List';
-import Borders from '../../components/borders/borders';
 import Image from '../../components/image/image';
+import Button from '../../components/button/Button';
+import Borders from '../../components/borders/Borders';
 
 const getCurrency = (cur: Currencies): string => {
   return Object.keys(cur).at(0) || '';

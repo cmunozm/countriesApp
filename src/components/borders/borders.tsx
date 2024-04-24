@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 
-type bordersProps = {
-  /**Label Text*/
+export type bordersProps = {
+  /**Label text */
   title: string;
+  /** Array of strings with the names of the countries */
   bordersList: string[];
 };
 
