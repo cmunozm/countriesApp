@@ -1,13 +1,19 @@
 import { Link } from 'react-router-dom';
 
 export type CardProps = {
+  /**Contry Name*/
   name: string;
+  /**Number of inhabitants of the country*/
   population: number;
+  /**number of inhabitants of the country */
   region: string;
+  /**Capital city of the country */
   capital: string;
+  /**Image of the flag */
   urlImage: string;
 };
 
+/**Component to display the main information of a country. */
 const Card = ({ name, population, region, capital, urlImage }: CardProps) => {
   return (
     <div className='card'>

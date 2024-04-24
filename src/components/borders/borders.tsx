@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 type bordersProps = {
+  /**Label Text*/
   title: string;
   bordersList: string[];
 };
