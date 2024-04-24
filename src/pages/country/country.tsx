@@ -5,6 +5,7 @@ import Button from '../../components/button/button';
 import useCountries from '../../infrastructure/useCountries';
 import List from '../../components/list/List';
 import Borders from '../../components/borders/borders';
+import Image from '../../components/image/image';
 
 const getCurrency = (cur: Currencies): string => {
   return Object.keys(cur).at(0) || '';
@@ -44,13 +45,11 @@ const Country = ({ countryData }: CountryProps) => {
         icon={faArrowLeft}
       />
       <section className='country__info'>
-        <div className='country__flag'>
-          <img
-            src={countryInfo.flag}
-            alt={`Flag ${countryInfo.name}`}
-            loading='lazy'
-          />
-        </div>
+        <Image
+          variant='country__flag'
+          src={countryInfo.flag}
+          alt={`Flag ${countryInfo.name}`}
+        />
         <div className='country__data'>
           <h2 className='country__name'>{countryInfo.name}</h2>
           <List
