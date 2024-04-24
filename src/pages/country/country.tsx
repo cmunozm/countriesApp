@@ -1,13 +1,13 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { CountriesAdapter, Currencies } from '../../infrastructure/apiTypes';
-import Icon from '../../components/icon/Icon';
+import Button from '../../components/button/button';
 import useCountries from '../../infrastructure/useCountries';
+import List from '../../components/list/List';
+import Borders from '../../components/borders/borders';
 
-const getCurrency = (cur: Currencies) => {
-  let currency: string;
-  currency = Object.keys(cur).at(0) || '';
-  return currency;
+const getCurrency = (cur: Currencies): string => {
+  return Object.keys(cur).at(0) || '';
 };
 
 type CountryProps = {
@@ -30,20 +30,19 @@ const Country = ({ countryData }: CountryProps) => {
   const currency = getCurrency(countryInfo.currencies);
   const leng: string[] = Object.values(countryInfo.languages);
 
-  const getCountryName = (cca3: string) => {
-    const border: CountriesAdapter | undefined = countries?.filter(
-      (item) => item.cca3 === cca3
-    )[0];
-
-    return border?.name;
-  };
+  const borders = countryInfo.borders.map((country) => {
+    const bordersNames = countries?.filter((item) => item.cca3 === country)[0];
+    return bordersNames?.name;
+  });
 
   return (
     <div className='country'>
-      <Link to='/' className='country__btn'>
-        <Icon icon={faArrowLeft} />
-        Back
-      </Link>
+      <Button
+        description='Back'
+        variant='country__btn'
+        redirectTo='/'
+        icon={faArrowLeft}
+      />
       <section className='country__info'>
         <div className='country__flag'>
           <img
@@ -54,68 +53,44 @@ const Country = ({ countryData }: CountryProps) => {
         </div>
         <div className='country__data'>
           <h2 className='country__name'>{countryInfo.name}</h2>
-          <ul className='country__details'>
-            <li>
-              <>
-                <span>Native Name:</span>
-                {countryInfo.name}
-              </>
-            </li>
-            <li>
-              <>
-                <span>Population:</span>
-                {countryInfo.population?.toLocaleString()}
-              </>
-            </li>
-            <li>
-              <>
-                <span>Region:</span>
-                {countryInfo.region}
-              </>
-            </li>
-            <li>
-              <>
-                <span>Sub Region:</span>
-                {countryInfo.subregion}
-              </>
-            </li>
-            <li>
-              <>
-                <span>Capital:</span>
-                {countryInfo.capital}
-              </>
-            </li>
-            <li>
-              <>
-                <span>Top Level Domain:</span>
-                {countryInfo.tld?.at(0)}
-              </>
-            </li>
-            <li>
-              <>
-                <span>Currencies:</span>
-                {currency}
-              </>
-            </li>
-            <li>
-              <>
-                <span>Lenguages</span>
-                {leng.join(', ')}
-              </>
-            </li>
-          </ul>
-          <div className='country__borders'>
-            {countryInfo.borders && countryInfo.borders?.length > 0 && (
-              <label>Border Countries:</label>
-            )}
-            {countryInfo.borders?.map((item) => (
-              <span key={item}>
-                <Link to={`/countries/${getCountryName(item)}`}>
-                  {getCountryName(item)}
-                </Link>
-              </span>
-            ))}
-          </div>
+          <List
+            variant='country__details'
+            listData={[
+              {
+                title: 'Native Name',
+                description: countryInfo.name,
+              },
+              {
+                title: 'Population',
+                description: countryInfo.population?.toLocaleString(),
+              },
+              {
+                title: 'Region',
+                description: countryInfo.region,
+              },
+              {
+                title: 'Sub Region',
+                description: countryInfo.subregion,
+              },
+              {
+                title: 'Capital',
+                description: countryInfo.capital[0],
+              },
+              {
+                title: 'Top Level Domain',
+                description: countryInfo.tld?.at(0)?.toString() || '',
+              },
+              {
+                title: 'Currencies',
+                description: currency,
+              },
+              {
+                title: 'Lenguages',
+                description: leng.join(', '),
+              },
+            ]}
+          />
+          <Borders title='Border Countries:' bordersList={borders} />
         </div>
       </section>
     </div>
