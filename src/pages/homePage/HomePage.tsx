@@ -2,14 +2,20 @@ import { useEffect, useState } from 'react';
 import CardList from '../../components/cardList/CardList';
 import Filters from '../../components/filters/Filters';
 import Pagination from '../../components/pagination/Pagination';
-import { CountriesAdapter } from '../../infrastructure/apiTypes';
+//import { CountriesAdapter } from '../../infrastructure/apiTypes';
 import useCountries from '../../infrastructure/useCountries';
+import { useAppDispatch } from '../../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
+import { saveCountries } from '../../redux/slices/country.slice';
 
 function HomePage() {
   const { loading, countries, getRegions, getByRegion, getByCountry } =
     useCountries();
+  const cards = useAppSelector((state) => state.countriesReducer);
+  const dispatch = useAppDispatch();
+
   const regions = getRegions();
-  const [cards, setCards] = useState<CountriesAdapter[]>([]);
+  // const [cards, setCards] = useState<CountriesAdapter[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const countriesPerPage = 16;
 
@@ -21,23 +27,24 @@ function HomePage() {
     setCurrentPage(1);
     const searchPattern = event.target.value;
     if (searchPattern !== '') {
-      setCards(getByCountry(searchPattern));
+      dispatch(saveCountries(getByCountry(searchPattern)));
     } else {
-      setCards(countries);
+      dispatch(saveCountries(countries));
     }
   };
 
   useEffect(() => {
     if (!loading) {
-      setCards(countries);
+      dispatch(saveCountries(countries));
+      // setCards(countries);
     }
-  }, [loading]);
+  }, [loading, countries, dispatch]);
 
   const handleChangeRegion = ({
     target,
   }: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentPage(1);
-    setCards(getByRegion(target.value));
+    dispatch(saveCountries(getByRegion(target.value)));
   };
 
   const handleOnChangePage = (page: number) => {
