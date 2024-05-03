@@ -6,37 +6,36 @@ import Pagination from '../../components/pagination/Pagination';
 import useCountries from '../../infrastructure/useCountries';
 import { useAppDispatch } from '../../redux/hooks';
 import { useAppSelector } from '../../redux/hooks';
-import { saveCountries } from '../../redux/slices/country.slice';
+import { saveCountries, getCountries } from '../../redux/slices/country.slice';
 
 function HomePage() {
   const { loading, countries, getRegions, getByRegion, getByCountry } =
     useCountries();
-  const cards = useAppSelector((state) => state.countriesReducer);
+  const cards = useAppSelector((state) => state.countriesReducer.countries);
+  const [cardsToShow, SetCardsToShow] = useState(cards);
   const dispatch = useAppDispatch();
 
   const regions = getRegions();
-  // const [cards, setCards] = useState<CountriesAdapter[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const countriesPerPage = 16;
 
   const lastIndex = currentPage * countriesPerPage;
   const firstIndex = lastIndex - countriesPerPage;
-  const currentCountries = cards.slice(firstIndex, lastIndex);
+  const currentCountries = cardsToShow.slice(firstIndex, lastIndex);
 
   const handleChangeCountry = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentPage(1);
     const searchPattern = event.target.value;
     if (searchPattern !== '') {
-      dispatch(saveCountries(getByCountry(searchPattern)));
+      SetCardsToShow(getByCountry(searchPattern));
     } else {
-      dispatch(saveCountries(countries));
+      dispatch(getCountries());
     }
   };
 
   useEffect(() => {
     if (!loading) {
       dispatch(saveCountries(countries));
-      // setCards(countries);
     }
   }, [loading, countries, dispatch]);
 
@@ -44,7 +43,7 @@ function HomePage() {
     target,
   }: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentPage(1);
-    dispatch(saveCountries(getByRegion(target.value)));
+    SetCardsToShow(getByRegion(target.value));
   };
 
   const handleOnChangePage = (page: number) => {
@@ -67,7 +66,7 @@ function HomePage() {
         <>
           <CardList cards={currentCountries} />
           <Pagination
-            totalPages={Math.round(cards.length / countriesPerPage)}
+            totalPages={Math.round(cardsToShow.length / countriesPerPage)}
             onChangePage={handleOnChangePage}
           />
         </>
