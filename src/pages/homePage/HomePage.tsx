@@ -36,6 +36,7 @@ function HomePage() {
   useEffect(() => {
     if (!loading) {
       dispatch(saveCountries(countries));
+      SetCardsToShow(countries);
     }
   }, [loading, countries, dispatch]);
 

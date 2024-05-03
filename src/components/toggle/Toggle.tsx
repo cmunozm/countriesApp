@@ -1,9 +1,10 @@
-import { useContext } from 'react';
-import { themeContext } from '../../infrastructure/themeContext';
+import { Theme } from '../../infrastructure/themeContext';
 
-const Toggle = () => {
-  const { theme, handleTheme } = useContext(themeContext);
-
+type toggleProps = {
+  theme: Theme;
+  handleClick: React.MouseEventHandler<HTMLInputElement>;
+};
+const Toggle = ({ theme, handleClick }: toggleProps) => {
   return (
     <label className='switch'>
       <span className='switch__inputContainer'>
@@ -11,7 +12,7 @@ const Toggle = () => {
           className='switch__input'
           type='checkbox'
           name='toggleTheme'
-          onClick={handleTheme}
+          onClick={handleClick}
         />
         <span />
       </span>

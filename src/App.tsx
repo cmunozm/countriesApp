@@ -20,10 +20,12 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  const { theme } = useContext(themeContext);
+  const { theme, handleTheme } = useContext(themeContext);
   return (
     <div className={theme.isDark ? 'main dark-mode' : 'main'}>
-      <Header title='Where in the World?' toggle={<Toggle />} />
+      <Header title='Where in the World?'>
+        <Toggle theme={theme} handleClick={handleTheme} />
+      </Header>
       <Suspense fallback={<div>Loading</div>}>
         <div className='container'>
           <RouterProvider router={router} />

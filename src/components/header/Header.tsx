@@ -1,13 +1,13 @@
 type HeaderProps = {
   title: string;
-  toggle: JSX.Element;
+  children: JSX.Element;
 };
 
-const Header = ({ title, toggle }: HeaderProps) => {
+const Header = ({ title, children }: HeaderProps) => {
   return (
     <header className='header'>
       <a href='/'>{title}</a>
-      {toggle}
+      {children}
     </header>
   );
 };
