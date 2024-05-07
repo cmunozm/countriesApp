@@ -23,7 +23,6 @@ export default defineConfig({
         'src/pages/homePage/HomePage.tsx',
         '.storybook',
         'src/infrastructure/apiTypes.ts',
-        'src/infrastructure/themeContext.tsx',
         '.eslintrc.cjs',
         'src/vite-env.d.ts',
       ]

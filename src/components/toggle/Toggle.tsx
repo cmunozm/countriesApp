@@ -1,4 +1,4 @@
-import { Theme } from '../../infrastructure/themeContext';
+import { Theme } from '../../infrastructure/apiTypes';
 
 type toggleProps = {
   theme: Theme;

@@ -2,10 +2,8 @@ import { useEffect, useState } from 'react';
 import CardList from '../../components/cardList/CardList';
 import Filters from '../../components/filters/Filters';
 import Pagination from '../../components/pagination/Pagination';
-//import { CountriesAdapter } from '../../infrastructure/apiTypes';
 import useCountries from '../../infrastructure/useCountries';
-import { useAppDispatch } from '../../redux/hooks';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { saveCountries, getCountries } from '../../redux/slices/country.slice';
 
 function HomePage() {

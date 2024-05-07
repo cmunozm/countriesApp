@@ -1,7 +1,6 @@
 import Country from './Country';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import ThemeProvider from '../../infrastructure/themeContext';
 
 describe('Country', () => {
   test('Should render country component', () => {
@@ -79,13 +78,11 @@ describe('Country', () => {
 
   test('Should get data from url when props are undefined', async () => {
     render(
-      <ThemeProvider>
-        <MemoryRouter initialEntries={['/countries/Belgium']}>
-          <Routes>
-            <Route path='/countries/Belgium' element={<Country />} />
-          </Routes>
-        </MemoryRouter>
-      </ThemeProvider>
+      <MemoryRouter initialEntries={['/countries/Belgium']}>
+        <Routes>
+          <Route path='/countries/Belgium' element={<Country />} />
+        </Routes>
+      </MemoryRouter>
     );
 
     /*  await waitFor(() => {

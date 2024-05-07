@@ -1,12 +1,10 @@
 import Fuse from "fuse.js";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CountriesAPI, CountriesAdapter } from "./apiTypes";
-import { themeContext } from "./themeContext";
 import { useFetch } from "./useFetch";
 
 
 const useCountries = () => {
-  const { handleList } = useContext(themeContext);
   const [loading, setLoading] = useState(true);
   const [countries, setCountries] = useState<CountriesAdapter[]>([]);
   const fuseOptions = {
@@ -21,7 +19,6 @@ const useCountries = () => {
       useFetch('https://restcountries.com/v3.1/all')
         .then(countries => {
           setCountries(createContryAdapter(countries));
-          handleList(countries);
           setLoading(false);
         })
         .catch(error => {

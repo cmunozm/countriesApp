@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import useCountries from './useCountries';
-import ThemeProvider from '../infrastructure/themeContext';
+
 /*
 const countriesData = [
   {
@@ -35,9 +35,7 @@ const countriesData = [
 describe('UseCountries', () => {
   test('should get countries data', async () => {
     const { result } = renderHook(() => useCountries(), {
-      wrapper: ({ children }: { children: React.ReactNode }) => (
-        <ThemeProvider>{children}</ThemeProvider>
-      ),
+      wrapper: ({ children }: { children: React.ReactNode }) => <>{children}</>,
     });
 
     await waitFor(() => {

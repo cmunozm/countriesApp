@@ -1,8 +1,9 @@
 import Header from './components/header/Header';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { lazy, Suspense, useContext } from 'react';
-import { themeContext } from './infrastructure/themeContext';
+import { lazy, Suspense } from 'react';
 import Toggle from './components/toggle/Toggle';
+import { useAppSelector, useAppDispatch } from './redux/hooks';
+import { toggleTheme } from './redux/slices/theme.slice';
 
 const Country = lazy(() => import('./pages/country/Country'));
 const HomePage = lazy(() => import('./pages/homePage/HomePage'));
@@ -20,7 +21,13 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  const { theme, handleTheme } = useContext(themeContext);
+  const theme = useAppSelector((state) => state.themeReducer);
+  const dispatch = useAppDispatch();
+
+  const handleTheme = () => {
+    dispatch(toggleTheme());
+  };
+
   return (
     <div className={theme.isDark ? 'main dark-mode' : 'main'}>
       <Header title='Where in the World?'>

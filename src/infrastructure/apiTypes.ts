@@ -1,3 +1,6 @@
+export type Theme = {
+  isDark: boolean;
+}
 export interface CountriesAdapter {
   name:         string;
   population:   number;
