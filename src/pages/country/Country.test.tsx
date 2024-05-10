@@ -1,4 +1,4 @@
-import Country from './Country';
+import CountryComponent from './Country';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ describe('Country', () => {
   test('Should render country component', () => {
     render(
       <MemoryRouter>
-        <Country
+        <CountryComponent
           countryData={{
             name: 'Belgium',
             cca3: 'BEL',
@@ -48,7 +48,7 @@ describe('Country', () => {
   test('Should render country component with empty fields', () => {
     render(
       <MemoryRouter>
-        <Country
+        <CountryComponent
           countryData={{
             name: 'Belgium',
             cca3: 'BEL',
