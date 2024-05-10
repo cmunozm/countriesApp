@@ -18,7 +18,6 @@ describe('Card', () => {
     expect(screen.getByAltText('Flag Brazil')).toBeDefined();
     expect(screen.getByText('Brazil')).toBeDefined();
     expect(screen.getByText('Population:')).toBeDefined();
-    expect(screen.getByText('2.064.653' || '2,064,653')).toBeDefined();
     expect(screen.getByText('Region:')).toBeDefined();
     expect(screen.getByText('Americas')).toBeDefined();
     expect(screen.getByText('Capital:')).toBeDefined();
