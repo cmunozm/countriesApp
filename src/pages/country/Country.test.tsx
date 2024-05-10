@@ -1,5 +1,5 @@
 import Country from './Country';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 describe('Country', () => {
@@ -74,21 +74,5 @@ describe('Country', () => {
     expect(screen.getByText('Capital:')).toBeDefined();
     expect(screen.getByText('Brussels')).toBeDefined();
     expect(screen.getByText('Currencies:')).toBeDefined();
-  });
-
-  test('Should get data from url when props are undefined', async () => {
-    render(
-      <MemoryRouter initialEntries={['/countries/Belgium']}>
-        <Routes>
-          <Route path='/countries/Belgium' element={<Country />} />
-        </Routes>
-      </MemoryRouter>
-    );
-
-    /*  await waitFor(() => {
-      expect(expect(screen.getAllByText('Belgium').length).toBe(2));
-    }); */
-
-    // expect(screen.getAllByText('Belgium')).toBeDefined();
   });
 });
