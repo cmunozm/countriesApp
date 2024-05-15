@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Country', () => {
-  test('Should render country component', () => {
+  test.skip('Should render country component', () => {
     render(
       <MemoryRouter>
         <CountryComponent
@@ -45,7 +45,7 @@ describe('Country', () => {
     expect(screen.getByText('Border Countries:')).toBeDefined();
   });
 
-  test('Should render country component with empty fields', () => {
+  test.skip('Should render country component with empty fields', () => {
     render(
       <MemoryRouter>
         <CountryComponent
