@@ -1,12 +1,12 @@
-import CountryComponent from './Country';
+import Country from './Country';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Country', () => {
-  test.skip('Should render country component', () => {
+  test('Should render country component', () => {
     render(
       <MemoryRouter>
-        <CountryComponent
+        <Country
           countryData={{
             name: 'Belgium',
             cca3: 'BEL',
@@ -45,10 +45,10 @@ describe('Country', () => {
     expect(screen.getByText('Border Countries:')).toBeDefined();
   });
 
-  test.skip('Should render country component with empty fields', () => {
+  test('Should render country component with empty fields', () => {
     render(
       <MemoryRouter>
-        <CountryComponent
+        <Country
           countryData={{
             name: 'Belgium',
             cca3: 'BEL',
