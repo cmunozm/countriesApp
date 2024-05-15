@@ -17,7 +17,7 @@ jobs:
         run: npm i
 
       - name: Run tests
-        run: npm run test
+        run: npm run test:ci
 
       #- name: Deploy to Firebase
       #  uses: mohammed-atif/firebase-publish-react@v1.0
