@@ -10,6 +10,7 @@ export default defineConfig({
   plugins: [
     react(),
   ],
+  base: 'https://cmunozm.github.io/countriesApp',
   test: {
     environment: "jsdom",
     globals: true,
