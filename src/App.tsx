@@ -10,12 +10,12 @@ const HomePage = lazy(() => import('./pages/homePage/HomePage'));
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/countriesApp/',
     element: <HomePage />,
     errorElement: <div>404 Not Found Page</div>,
   },
   {
-    path: '/countries/:country',
+    path: '/countriesApp/countries/:country',
     element: <Country />,
   },
 ]);
