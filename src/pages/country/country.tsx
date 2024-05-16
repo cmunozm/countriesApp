@@ -41,7 +41,7 @@ const Country = ({ countryData }: CountryProps) => {
       <Button
         description='Back'
         variant='country__btn'
-        redirectTo='/'
+        redirectTo='/countriesApp/'
         icon={faArrowLeft}
       />
       <section className='country__info'>

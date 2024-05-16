@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     errorElement: <div>404 Not Found Page</div>,
   },
   {
-    path: '/countriesApp/countries/:country',
+    path: '/countries/:country',
     element: <Country />,
   },
 ]);

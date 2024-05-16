@@ -6,7 +6,7 @@ type HeaderProps = {
 const Header = ({ title, children }: HeaderProps) => {
   return (
     <header className='header'>
-      <a href='/'>{title}</a>
+      <a href='/countriesApp/'>{title}</a>
       {children}
     </header>
   );
