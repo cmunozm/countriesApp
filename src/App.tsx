@@ -5,7 +5,7 @@ import Toggle from './components/toggle/Toggle';
 import { useAppSelector, useAppDispatch } from './redux/hooks';
 import { toggleTheme } from './redux/slices/theme.slice';
 
-const Country = lazy(() => import('./pages/country/CountryComponent'));
+const Country = lazy(() => import('./pages/country/Country'));
 const HomePage = lazy(() => import('./pages/homePage/HomePage'));
 
 const router = createBrowserRouter([
