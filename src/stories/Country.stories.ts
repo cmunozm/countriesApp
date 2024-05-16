@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Country from '../pages/country/Country';
+import Country from '../pages/country/CountryComponent';
 import { Region } from '../infrastructure/apiTypes';
 import { withRouter } from 'storybook-addon-react-router-v6';
 

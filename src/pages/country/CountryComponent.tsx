@@ -15,7 +15,7 @@ type CountryProps = {
   countryData?: CountriesAdapter;
 };
 
-export const Country = ({ countryData }: CountryProps) => {
+const Country = ({ countryData }: CountryProps) => {
   const params = useParams();
   const { countries } = useCountries();
 
@@ -95,3 +95,5 @@ export const Country = ({ countryData }: CountryProps) => {
     </div>
   );
 };
+
+export default Country;

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { Country } from './Country';
+import Country from './CountryComponent';
 
 describe('Country', () => {
   test('Should render country component', () => {
